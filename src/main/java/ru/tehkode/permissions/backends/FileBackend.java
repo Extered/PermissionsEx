@@ -61,7 +61,7 @@ public class FileBackend extends PermissionBackend {
 
 	@Override
 	public void initialize() throws PermissionBackendException {
-		PermissionsEx plugin = PermissionsEx.getPlugin();
+		PermissionsEx plugin = (PermissionsEx) PermissionsEx.getPlugin();
 		String permissionFilename = config.getString("permissions.backends.file.file");
 
 		// Default settings
@@ -70,7 +70,7 @@ public class FileBackend extends PermissionBackend {
 			config.set("permissions.backends.file.file", "permissions.yml");
 		}
 
-		String baseDir = config.getString("permissions.basedir", plugin.getDataFolder());
+		String baseDir = config.getString("permissions.basedir", plugin.getDataFolder().getPath());
 
 		if (baseDir.contains("\\") && !"\\".equals(File.separator)) {
 			baseDir = baseDir.replace("\\", File.separator);
